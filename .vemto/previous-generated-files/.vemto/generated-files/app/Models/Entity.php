@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Entity extends Model
+{
+    use HasFactory;
+    use SoftDeletes;
+
+    protected $table = 'entity';
+
+    protected $guarded = [];
+
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
+    }
+}
