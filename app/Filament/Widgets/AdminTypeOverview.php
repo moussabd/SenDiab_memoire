@@ -26,12 +26,12 @@ class AdminTypeOverview extends BaseWidget
         if ($user->id === 1) {
             // Show all stats for the admin user
             return [
-                Stat::make('Nombre de médecins', Doctor::count()),
-                Stat::make('Nombre de patients', Patient::count()),
-                Stat::make('Nombre d\'utilisateurs', User::count()),
-                Stat::make('Nombre de paramètres', Parameter::count()),
-                Stat::make('Nombre d\'entités', Entity::count()),
-                Stat::make('Nombre de surveillances', Monitoring::count()),
+                Stat::make('Number of doctors', Doctor::count()),
+                Stat::make('Number of patients', Patient::count()),
+                Stat::make('Number of users', User::count()),
+                Stat::make('Number of parameters', Parameter::count()),
+                Stat::make('Number of entities', Entity::count()),
+                Stat::make('Number of monitors', Monitoring::count()),
             ];
         }
 
@@ -41,7 +41,7 @@ class AdminTypeOverview extends BaseWidget
             $monitoringCount = Monitoring::where('patient_id', $user->patient->id)->count();
 
             return [
-                Stat::make('Nombre de surveillances', $monitoringCount),
+                Stat::make('Number of monitors', $monitoringCount),
             ];
         }
 
@@ -57,8 +57,8 @@ class AdminTypeOverview extends BaseWidget
             $doctorMonitoringCount = Monitoring::whereIn('patient_id', $assignedPatientIds)->count();
 
             return [
-                Stat::make('Nombre de patients', $doctorPatientCount),
-                Stat::make('Nombre de surveillances', $doctorMonitoringCount),
+                Stat::make('Number of patients', $doctorPatientCount),
+                Stat::make('Number of monitors', $doctorMonitoringCount),
             ];
         }
 
